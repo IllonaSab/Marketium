@@ -1,24 +1,30 @@
 <section class="articles-page">
   <h1>Tous les articles</h1>
 
-<div class="filters">
-  <app-button 
-    label="Tous" 
-    [variant]="selectedCategory === 'all' ? 'primary' : 'secondary'"
-    (clicked)="filterByCategory('all')"
-  />
-  @for (cat of categories; track cat.documentId) {
+  <div class="filters">
     <app-button 
-      [label]="cat.nom" 
-      [variant]="selectedCategory === cat.slug ? 'primary' : 'secondary'"
-      (clicked)="filterByCategory(cat.slug)"
+      label="Tous" 
+      [variant]="selectedCategory === 'all' ? 'primary' : 'secondary'"
+      (clicked)="filterByCategory('all')"
     />
-  }
-</div>
+    @for (cat of categories; track cat.documentId) {
+      <app-button 
+        [label]="cat.nom" 
+        [variant]="selectedCategory === cat.slug ? 'primary' : 'secondary'"
+        (clicked)="filterByCategory(cat.slug)"
+      />
+    }
+  </div>
 
   <div class="articles-grid">
     @for (article of articles; track article.documentId) {
-     <app-article-card [article]="article" />
+      <app-article-card [article]="article" />
     }
   </div>
+
+  <app-pagination 
+    [currentPage]="currentPage"
+    [pageCount]="pageCount"
+    (pageChanged)="onPageChange($event)"
+  />
 </section>

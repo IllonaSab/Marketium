@@ -11,12 +11,12 @@ export class ApolloService {
 
   constructor(private apollo: Apollo) {}
 
-  getArticles(): Observable<any[]> {
+  getArticles(page: number = 1, pageSize: number = 6): Observable<any> {
     return this.apollo
       .watchQuery({
         query: gql`
-          query {
-            articles {
+          query GetArticles($page: Int, $pageSize: Int) {
+            articles(pagination: { page: $page, pageSize: $pageSize }) {
               documentId
               titre
               extrait
@@ -31,10 +31,24 @@ export class ApolloService {
                 slug
               }
             }
+            articles_connection(pagination: { page: $page, pageSize: $pageSize }) {
+              pageInfo {
+                total
+                page
+                pageSize
+                pageCount
+              }
+            }
           }
         `,
+        variables: { page, pageSize },
       })
-      .valueChanges.pipe(map((result: any) => result?.data?.articles ?? []));
+      .valueChanges.pipe(
+        map((result: any) => ({
+          articles: result?.data?.articles ?? [],
+          pageInfo: result?.data?.articles_connection?.pageInfo ?? {},
+        })),
+      );
   }
 
   getArticleBySlug(slug: string): Observable<any> {
