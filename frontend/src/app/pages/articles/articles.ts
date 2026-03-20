@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ApolloService } from '../../services/apollo';
 
 import { ArticleCard } from '../../components/article-card/article-card';
+import { Button } from '../../components/button/button';
 
 @Component({
   selector: 'app-articles',
-  imports: [CommonModule, ArticleCard],
+  imports: [CommonModule, ArticleCard, Button],
   templateUrl: './articles.html',
   styleUrl: './articles.scss',
 })

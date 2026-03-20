@@ -1,8 +1,9 @@
-<section class="hero">
-  <h1>Bienvenue sur Marketium</h1>
-  <p>Découvrez nos derniers articles sur le Lifestyle, la Food et le Luxe.</p>
-  <app-button label="Voir tous les articles" variant="outline" (clicked)="goToArticles()" />
-</section>
+<app-hero 
+  title="Bienvenue sur Marketium"
+  subtitle="Découvrez nos derniers articles sur le Lifestyle, la Food et le Luxe."
+  buttonLabel="Voir tous les articles"
+  (buttonClicked)="goToArticles()"
+/>
 
 <section class="latest-articles">
   <h2>Derniers articles</h2>

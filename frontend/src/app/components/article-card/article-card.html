@@ -14,7 +14,7 @@
     <p>{{ article.extrait }}</p>
     <div class="card-footer">
       <span class="date">{{ article.date | date:'mediumDate' }}</span>
-      <a [routerLink]="['/articles', article.slug]">Lire la suite →</a>
+      <app-button label="Lire la suite →" variant="outline" (clicked)="goToArticle()" />
     </div>
   </div>
 </div>

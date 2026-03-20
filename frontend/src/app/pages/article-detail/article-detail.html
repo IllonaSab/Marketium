@@ -18,9 +18,9 @@
 
     <div class="article-content" [innerHTML]="article.contenu | richText"></div>
 
-    <div class="article-footer">
-      <a routerLink="/articles">← Retour aux articles</a>
-    </div>
+   <div class="article-footer">
+    <app-button label="← Retour aux articles" variant="outline" (clicked)="goBack()" />
+   </div>
   </article>
 } @else {
   <p>Chargement...</p>

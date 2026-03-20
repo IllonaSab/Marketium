@@ -1,16 +1,20 @@
 <section class="articles-page">
   <h1>Tous les articles</h1>
 
-  <div class="filters">
-    <button (click)="filterByCategory('all')" [class.active]="selectedCategory === 'all'">
-      Tous
-    </button>
-    @for (cat of categories; track cat.documentId) {
-      <button (click)="filterByCategory(cat.slug)" [class.active]="selectedCategory === cat.slug">
-        {{ cat.nom }}
-      </button>
-    }
-  </div>
+<div class="filters">
+  <app-button 
+    label="Tous" 
+    [variant]="selectedCategory === 'all' ? 'primary' : 'secondary'"
+    (clicked)="filterByCategory('all')"
+  />
+  @for (cat of categories; track cat.documentId) {
+    <app-button 
+      [label]="cat.nom" 
+      [variant]="selectedCategory === cat.slug ? 'primary' : 'secondary'"
+      (clicked)="filterByCategory(cat.slug)"
+    />
+  }
+</div>
 
   <div class="articles-grid">
     @for (article of articles; track article.documentId) {

@@ -1,0 +1,13 @@
+<section class="hero">
+  <h1>{{ title }}</h1>
+  @if (subtitle) {
+    <p>{{ subtitle }}</p>
+  }
+  @if (buttonLabel) {
+    <app-button 
+      [label]="buttonLabel" 
+      variant="outline" 
+      (clicked)="buttonClicked.emit()"
+    />
+  }
+</section>

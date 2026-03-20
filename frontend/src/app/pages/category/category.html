@@ -3,12 +3,7 @@
 
   <div class="articles-grid">
     @for (article of articles; track article.documentId) {
-      <div class="article-card">
-        <span class="category">{{ article.category?.nom }}</span>
-        <h3>{{ article.titre }}</h3>
-        <p>{{ article.extrait }}</p>
-        <a [routerLink]="['/articles', article.slug]">Lire la suite →</a>
-      </div>
+      <app-article-card [article]="article" />
     }
   </div>
 </section>
