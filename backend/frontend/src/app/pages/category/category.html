@@ -1,9 +1,0 @@
-<section class="category-page">
-  <h1>{{ categoryName }}</h1>
-
-  <div class="articles-grid">
-    @for (article of articles; track article.documentId) {
-      <app-article-card [article]="article" />
-    }
-  </div>
-</section>
