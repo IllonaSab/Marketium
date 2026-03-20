@@ -28,7 +28,7 @@ export class ApolloService {
           }
         `,
       })
-      .valueChanges.pipe(map((result: any) => result.data.articles));
+      .valueChanges.pipe(map((result: any) => result?.data?.articles ?? []));
   }
 
   getArticleBySlug(slug: string): Observable<any> {
@@ -54,7 +54,7 @@ export class ApolloService {
         `,
         variables: { slug },
       })
-      .valueChanges.pipe(map((result: any) => result.data.articles[0]));
+      .valueChanges.pipe(map((result: any) => result?.data?.articles?.[0] ?? null));
   }
 
   getCategories(): Observable<any[]> {
@@ -70,7 +70,7 @@ export class ApolloService {
           }
         `,
       })
-      .valueChanges.pipe(map((result: any) => result.data.categories));
+      .valueChanges.pipe(map((result: any) => result?.data?.categories ?? []));
   }
 
   getArticlesByCategory(slug: string): Observable<any[]> {
@@ -93,6 +93,6 @@ export class ApolloService {
         `,
         variables: { slug },
       })
-      .valueChanges.pipe(map((result: any) => result.data.articles));
+      .valueChanges.pipe(map((result: any) => result?.data?.articles ?? []));
   }
 }
