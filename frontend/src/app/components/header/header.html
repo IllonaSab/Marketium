@@ -1,9 +1,9 @@
 <header>
   <nav>
-    <a routerLink="/">Marketium</a>
+    <a routerLink="/" class="logo">Market<span>ium</span></a>
     <ul>
-      <li><a routerLink="/">Accueil</a></li>
-      <li><a routerLink="/articles">Articles</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+      <li><a routerLink="/articles" routerLinkActive="active">Articles</a></li>
     </ul>
   </nav>
 </header>

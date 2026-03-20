@@ -1,1 +1,25 @@
-<p>articles works!</p>
+<section class="articles-page">
+  <h1>Tous les articles</h1>
+
+  <div class="filters">
+    <button (click)="filterByCategory('all')" [class.active]="selectedCategory === 'all'">
+      Tous
+    </button>
+    @for (cat of categories; track cat.documentId) {
+      <button (click)="filterByCategory(cat.slug)" [class.active]="selectedCategory === cat.slug">
+        {{ cat.nom }}
+      </button>
+    }
+  </div>
+
+  <div class="articles-grid">
+    @for (article of articles; track article.documentId) {
+      <div class="article-card">
+        <span class="category">{{ article.category?.nom }}</span>
+        <h3>{{ article.titre }}</h3>
+        <p>{{ article.extrait }}</p>
+        <a [routerLink]="['/articles', article.slug]">Lire la suite →</a>
+      </div>
+    }
+  </div>
+</section>

@@ -1,1 +1,21 @@
-<p>article-detail works!</p>
+@if (article) {
+  <article class="article-detail">
+    <div class="article-header">
+      <a [routerLink]="['/category', article.category?.slug]" class="category">
+        {{ article.category?.nom }}
+      </a>
+      <h1>{{ article.titre }}</h1>
+      <p class="date">{{ article.date | date:'longDate' }}</p>
+    </div>
+
+    <div class="article-content">
+      <div [innerHTML]="article.contenu | richText"></div>
+    </div>
+
+    <div class="article-meta">
+      <a routerLink="/articles">← Retour aux articles</a>
+    </div>
+  </article>
+} @else {
+  <p>Chargement...</p>
+}
