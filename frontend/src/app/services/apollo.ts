@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ApolloService {
+  private strapiUrl = 'http://localhost:1337';
+
   constructor(private apollo: Apollo) {}
 
   getArticles(): Observable<any[]> {
@@ -20,6 +22,10 @@ export class ApolloService {
               extrait
               date
               slug
+              image {
+                url
+                alternativeText
+              }
               category {
                 nom
                 slug
@@ -43,6 +49,10 @@ export class ApolloService {
               extrait
               date
               slug
+              image {
+                url
+                alternativeText
+              }
               category {
                 nom
                 slug
@@ -54,7 +64,7 @@ export class ApolloService {
         `,
         variables: { slug },
       })
-      .valueChanges.pipe(map((result: any) => result?.data?.articles?.[0] ?? null));
+      .valueChanges.pipe(map((result: any) => result?.data?.articles[0] ?? null));
   }
 
   getCategories(): Observable<any[]> {
@@ -84,6 +94,10 @@ export class ApolloService {
               extrait
               date
               slug
+              image {
+                url
+                alternativeText
+              }
               category {
                 nom
                 slug
@@ -107,6 +121,10 @@ export class ApolloService {
               extrait
               date
               slug
+              image {
+                url
+                alternativeText
+              }
               category {
                 nom
                 slug

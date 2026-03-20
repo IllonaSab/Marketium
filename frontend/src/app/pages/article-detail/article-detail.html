@@ -8,11 +8,17 @@
       <p class="date">{{ article.date | date:'longDate' }}</p>
     </div>
 
-    <div class="article-content">
-      <div [innerHTML]="article.contenu | richText"></div>
-    </div>
+    @if (article.image?.url) {
+      <img 
+        [src]="'http://localhost:1337' + article.image.url"
+        [alt]="article.image.alternativeText || article.titre"
+        class="article-image"
+      />
+    }
 
-    <div class="article-meta">
+    <div class="article-content" [innerHTML]="article.contenu | richText"></div>
+
+    <div class="article-footer">
       <a routerLink="/articles">← Retour aux articles</a>
     </div>
   </article>
