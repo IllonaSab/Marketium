@@ -7,7 +7,7 @@ import { ArticleCard } from '../../components/article-card/article-card';
 
 @Component({
   selector: 'app-articles',
-  imports: [RouterLink, CommonModule, ArticleCard],
+  imports: [CommonModule, ArticleCard],
   templateUrl: './articles.html',
   styleUrl: './articles.scss',
 })
