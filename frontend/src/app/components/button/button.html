@@ -1,8 +1,13 @@
 <button 
   [type]="type"
-  [class]="'btn btn-' + variant"
+  [class]="'btn btn-' + variant + (isIcon ? ' btn-icon' : '')"
   [disabled]="disabled"
   (click)="onClick()"
 >
-  {{ label }}
+  @if (icon) {
+    <span [innerHTML]="icon"></span>
+  }
+  @if (label) {
+    {{ label }}
+  }
 </button>

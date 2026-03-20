@@ -5,14 +5,9 @@
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
       <li><a routerLink="/articles" routerLinkActive="active">Articles</a></li>
     </ul>
-    <div class="search">
-      <input 
-        type="text" 
-        [(ngModel)]="searchQuery" 
-        (keyup.enter)="onSearch()"
-        placeholder="Rechercher un article..." 
-      />
-      <button (click)="onSearch()">🔍</button>
-    </div>
+    <app-search
+     placeholder="Rechercher un article..."
+     (searched)="onSearch($event)"
+    />
   </nav>
 </header>

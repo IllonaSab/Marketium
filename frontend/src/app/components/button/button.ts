@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Button {
   @Input() label: string = '';
+  @Input() icon: string = '';
+  @Input() isIcon: boolean = false;
   @Input() variant: 'primary' | 'secondary' | 'outline' = 'primary';
   @Input() type: string = 'button';
   @Input() disabled: boolean = false;
