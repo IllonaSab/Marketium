@@ -29,7 +29,7 @@ npm run develop
 
 **Frontend**
 ```bash
-cd frontend-angular
+cd frontend
 npm install
 ng serve
 ```
