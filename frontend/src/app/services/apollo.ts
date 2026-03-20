@@ -95,4 +95,27 @@ export class ApolloService {
       })
       .valueChanges.pipe(map((result: any) => result?.data?.articles ?? []));
   }
+
+  searchArticles(query: string): Observable<any[]> {
+    return this.apollo
+      .watchQuery({
+        query: gql`
+          query SearchArticles($query: String!) {
+            articles(filters: { titre: { containsi: $query } }) {
+              documentId
+              titre
+              extrait
+              date
+              slug
+              category {
+                nom
+                slug
+              }
+            }
+          }
+        `,
+        variables: { query },
+      })
+      .valueChanges.pipe(map((result: any) => result?.data?.articles ?? []));
+  }
 }
