@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 import { ApolloService } from '../../services/apollo';
-
 import { RichTextPipe } from '../../pipes/rich-text-pipe';
 import { Button } from '../../components/button/button';
 
@@ -20,6 +19,8 @@ export class ArticleDetail implements OnInit {
     private route: ActivatedRoute,
     private apolloService: ApolloService,
     private router: Router,
+    private titleService: Title,
+    private metaService: Meta,
   ) {}
 
   ngOnInit() {
@@ -27,9 +28,17 @@ export class ArticleDetail implements OnInit {
     if (slug) {
       this.apolloService.getArticleBySlug(slug).subscribe((article) => {
         this.article = article;
+        if (article) {
+          this.titleService.setTitle(article.metaTitle || article.titre);
+          this.metaService.updateTag({
+            name: 'description',
+            content: article.metaDescription || article.extrait,
+          });
+        }
       });
     }
   }
+
   goBack() {
     this.router.navigate(['/articles']);
   }
