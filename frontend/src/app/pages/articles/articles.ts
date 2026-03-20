@@ -3,9 +3,11 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApolloService } from '../../services/apollo';
 
+import { ArticleCard } from '../../components/article-card/article-card';
+
 @Component({
   selector: 'app-articles',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, ArticleCard],
   templateUrl: './articles.html',
   styleUrl: './articles.scss',
 })
